@@ -5,7 +5,7 @@ const deleteOne = require('../schemas/deleteOne')
 const UpdateOne = require('../schemas/updateOne')
 let Products = require('../Products')
 
-const productsRoute=(fastify, options, done) => {
+const productsRoute = (fastify, options, done) => {
 
 
     fastify.get('/',getAll, function(request, reply){
