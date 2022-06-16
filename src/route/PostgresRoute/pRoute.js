@@ -5,15 +5,21 @@ const getOne = require('/workspace/CRUD-Day3/src/schemas/getOne.js')
 const postOne = require('/workspace/CRUD-Day3/src/schemas/postOne.js')
 const deleteOne = require('/workspace/CRUD-Day3/src/schemas/deleteOne.js')
 const UpdateOne = require('/workspace/CRUD-Day3/src/schemas/updateOne.js')
+const vatCalculator = require('../../utlis/vatCalculator')
 
 const PostgresProductsRoute = (fastify, options, done) => {
 
     fastify.post('/',postOne, async (request, reply) => {
         
         try {
-            const {product, color, price, status} = request.body
+            const {product, color, price, status, gross_amount} = request.body
+
+            const netAmound = vatCalculator.calculateNetAmound(gross_amount)
+            const vatAmount = vatCalculator.calculateVAT(netAmound)
+
             const { rows } = await fastify.pg.query(
-            "INSERT INTO products (product, color, price, status) VALUES ($1, $2, $3, $4) RETURNING * ", [product, color, price, status],)
+            "INSERT INTO products (product, color, price, status, gross_amount, net_amount, excluded_vat_amount ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING * ",
+             [product, color, price, status, gross_amount, netAmound, vatAmount],)
             reply.code(201).send(rows[0])
         } catch(err) {
           reply.send(err)

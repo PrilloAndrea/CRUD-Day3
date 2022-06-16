@@ -19,7 +19,8 @@ content-type: application/json
     "product": "t-shirt",
     "color": "blue",
     "price": 43,
-    "status": true
+    "status": true,
+    "gross_amount": 20
 }
 
 

@@ -7,7 +7,8 @@ const postOne = {
                 product: {type: 'string'},
                 color: {type: 'string'},
                 price: {type: 'integer'},
-                status: {type: 'boolean'}
+                status: {type: 'boolean'},
+                gross_amount: {type: 'number'}
               },
 
         },
