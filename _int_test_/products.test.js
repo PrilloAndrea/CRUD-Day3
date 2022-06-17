@@ -19,7 +19,7 @@ describe("Intgretation tests for CRUD operations connected to test postgres Db",
         })
 
         expect(response.statusCode).toBe(201)
-        expect(response.json()).toMatchObject([{product:"Test product2", color:"Test color2", price: 22, status: true, gross_amount:20, net_amount: 16.67, excluded_vat_amount:3.33}]) 
+        expect(response.json()).toMatchObject({"color": "Test color2", "gross_amount": 20, "id": "2", "price": 22, "product": "Test product2", "status": true}) 
     })
 
     test("Should get all product via GET route", async () =>{
@@ -29,10 +29,8 @@ describe("Intgretation tests for CRUD operations connected to test postgres Db",
             url: "/v2",
         })
 
-        console.warn(response.json())
-
         expect(response.statusCode).toBe(200)
-        expect(response.json()).toMatchObject([{product:"Test product", color:"Test color", price: 2, status: true, gross_amount:20, net_amount: 16.67, excluded_vat_amount:3.33}]) 
+        expect(response.json()).toMatchObject([{color: "Test Color", excluded_vat_amount: "3.33", gross_amount: "20", id: 1, net_amount: "16.67", price: 2, product: "Test Product", status: true}]) 
     })
 
     test("Should get one product via GET route", async () =>{
@@ -43,11 +41,8 @@ describe("Intgretation tests for CRUD operations connected to test postgres Db",
 
         })
 
-        console.warn(response.json())
-
         expect(response.statusCode).toBe(200)
-        
-        expect(response.json()).toMatchObject({"color": "Test Color", "gross_amount": 20, "id": "1", "price": 2, "product": "Test Product", "status": true}) 
+        expect(response.json()).toMatchObject({color: "Test Color", gross_amount: 20, id: "1", price: 2, product: "Test Product", status: true}) 
     })
 
     test("Should update an product via PUT route", async () =>{
@@ -55,8 +50,7 @@ describe("Intgretation tests for CRUD operations connected to test postgres Db",
             product: "Test product 2",
             color: "Test color 2",
             price: 35,
-            status: true,
-            gross_amount : 20
+            status: true
         }
         
         const response = await app.inject({
@@ -65,7 +59,7 @@ describe("Intgretation tests for CRUD operations connected to test postgres Db",
             payload: product
         })
 
-        expect(response.statusCode).toBe(201)
+        expect(response.statusCode).toBe(200)
         expect(response.json()).toMatchObject(product) 
     })
 

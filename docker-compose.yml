@@ -15,6 +15,7 @@ services:
     image: node:16.15.1
     working_dir: /usr/src/web-app
     entrypoint: [ 'npm', 'run', 'test:watch' ]
+    # entrypoint: [ 'npm', 'run', 'dev' ]
     ports:
       - '${WEB_APP_HOST_PORT:-8080}:8080'
     volumes:
