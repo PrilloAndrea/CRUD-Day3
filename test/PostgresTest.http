@@ -1,23 +1,23 @@
 
 
 ### GET ALL
-GET http://127.0.0.1:3000/v2 HTTP/1.1
+GET http://127.0.0.1:8080/v2 HTTP/1.1
 
 ### GET ONE 
-GET http://127.0.0.1:3000/v2/1 HTTP/1.1
+GET http://127.0.0.1:8080/v2/7 HTTP/1.1
 
 
 ### GET SWAGGER
-GET http://127.0.0.1:3000/docs HTTP/1.1
+GET http://127.0.0.1:8080/docs HTTP/1.1
 
 
 ### Post 
-POST http://127.0.0.1:3000/v2 HTTP/1.1
+POST http://127.0.0.1:8080/v2 HTTP/1.1
 content-type: application/json
 
 {
-    "product": "t-shirt",
-    "color": "blue",
+    "product": "shirt",
+    "color": "red",
     "price": 43,
     "status": true,
     "gross_amount": 20
@@ -25,11 +25,11 @@ content-type: application/json
 
 
 ### Delete ONE 
-DELETE  http://127.0.0.1:3000/v2/3 HTTP/1.1
+DELETE  http://127.0.0.1:8080/v2/1 HTTP/1.1
 
 
 ### Update one  
-PUT http://127.0.0.1:3000/v2/1 HTTP/1.1
+PUT http://127.0.0.1:8080/v2/2 HTTP/1.1
 content-type: application/json
 
 {

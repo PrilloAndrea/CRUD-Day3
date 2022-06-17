@@ -1,10 +1,10 @@
 const client = require("pg/lib/native/client")
 
-const getAll = require('/workspace/CRUD-Day3/src/schemas/getAll.js')
-const getOne = require('/workspace/CRUD-Day3/src/schemas/getOne.js')
-const postOne = require('/workspace/CRUD-Day3/src/schemas/postOne.js')
-const deleteOne = require('/workspace/CRUD-Day3/src/schemas/deleteOne.js')
-const UpdateOne = require('/workspace/CRUD-Day3/src/schemas/updateOne.js')
+const getAll = require('../../schemas/getAll')
+const getOne = require('../../schemas/getOne')
+const postOne = require('../../schemas/postOne')
+const deleteOne = require('../../schemas/deleteOne')
+const UpdateOne = require('../../schemas/updateOne')
 const vatCalculator = require('../../utlis/vatCalculator')
 
 const PostgresProductsRoute = (fastify, options, done) => {
